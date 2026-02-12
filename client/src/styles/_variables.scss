@@ -1,0 +1,16 @@
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+$background-color: #f8f9fa;
+$text-color: #212529;
+$border-color: #dee2e6;
+$white: #ffffff;
+$shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+:root {
+  --primary: #{$primary-color};
+  --secondary: #{$secondary-color};
+  --bg: #{$background-color};
+  --text: #{$text-color};
+  --border: #{$border-color};
+  --white: #{$white};
+}

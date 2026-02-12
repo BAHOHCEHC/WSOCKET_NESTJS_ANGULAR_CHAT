@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  client:
+    build: ./client
+    ports:
+      - "4200:80"
+    depends_on:
+      - server
+
+  server:
+    build: ./server
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    environment:
+      - TYPEORM_HOST=postgres
+      - TYPEORM_USERNAME=postgres
+      - TYPEORM_PASSWORD=postgres
+      - TYPEORM_DATABASE=chat
+      - TYPEORM_PORT=5432
+      - TYPEORM_SYNCHRONIZE=true
+
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: chat
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

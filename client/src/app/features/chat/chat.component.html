@@ -1,0 +1,40 @@
+<div class="chat-container">
+  <header class="chat-header">
+    <h1 class="chat-header__title">WebSocket Chat</h1>
+    <div class="chat-header__status" [class.chat-header__status--connected]="isConnected()">
+      {{ isConnected() ? 'Connected' : 'Disconnected' }}
+    </div>
+  </header>
+
+  <aside class="chat-sidebar">
+    <form [formGroup]="roomForm" (ngSubmit)="onRoomChange()" class="chat-room-form">
+      <div class="chat-room-form__group">
+        <label for="room" class="chat-room-form__label">Room:</label>
+        <input 
+          id="room" 
+          formControlName="room" 
+          type="text" 
+          class="chat-room-form__input"
+          placeholder="Enter room name"
+        >
+      </div>
+      <button 
+        type="submit" 
+        [disabled]="roomForm.invalid" 
+        class="chat-room-form__button"
+      >
+        Join
+      </button>
+    </form>
+    
+    <div class="chat-info">
+      <p class="chat-info__user">Logged in as: <strong>{{ currentUser() }}</strong></p>
+      <p class="chat-info__room">Currently in: <strong>{{ currentRoom() }}</strong></p>
+    </div>
+  </aside>
+
+  <main class="chat-main">
+    <app-message-list [messages]="messages()"></app-message-list>
+    <app-message-input (send)="onSendMessage($event)"></app-message-input>
+  </main>
+</div>

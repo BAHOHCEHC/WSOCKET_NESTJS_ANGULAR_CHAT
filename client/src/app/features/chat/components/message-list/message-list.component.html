@@ -1,0 +1,11 @@
+<div class="message-list">
+    @for (msg of messages(); track msg.id || $index) {
+    <div class="message-list__item">
+        <div class="message-list__user">{{ msg.user }}:</div>
+        <div class="message-list__content">{{ msg.message }}</div>
+        <div class="message-list__time">{{ msg.createdAt | date:'shortTime' }}</div>
+    </div>
+    } @empty {
+    <div class="message-list__empty">No messages yet.</div>
+    }
+</div>

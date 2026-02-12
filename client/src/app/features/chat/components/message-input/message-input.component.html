@@ -1,0 +1,7 @@
+<form [formGroup]="messageForm" (ngSubmit)="onSend()" class="message-input">
+    <input type="text" formControlName="message" class="message-input__field" placeholder="Type a message..."
+        autocomplete="off">
+    <button type="submit" [disabled]="messageForm.invalid" class="message-input__button">
+        Send
+    </button>
+</form>
